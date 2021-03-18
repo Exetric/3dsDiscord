@@ -10,14 +10,19 @@
     <button onclick="sendMessage();" type="button" name="send">Send</button>
   </body>
   <script type="text/javascript">
+
+    var webhookURL     = 'put url here';
+    var webhookAvatar  = 'put avatar url here';
+    var webhookName    = 'put a webhook name here';
+
     function sendMessage() {
       var str = document.getElementById('messageInput').value;
       var request = new XMLHttpRequest();
-      request.open("POST", "https://canary.discord.com/api/webhooks/821920450841280512/yw9wP21juhLHvhXpaLR2PAhL42bWWHWo_mq209s-p7Eh02lSjfA5sNbBaclRuQiFAaNb");
+      request.open("POST", webhookURL);
       request.setRequestHeader('Content-type', 'application/json');
       var params = {
-        username: "Ethan's 3DS",
-        avatar_url: "https://lh3.googleusercontent.com/proxy/DUBlf4oxX9ihXiADmnbuoRnX50053Bz-6fowmw80rBcNUwNu_583NIXhhqTZhdDSOnQgSqP5BEfiNOIzxXVUYtzKAtdV8m1CM3TAkAnLXXe2wBTR",
+        username: webhookName,
+        avatar_url: webhookAvatar,
         content: str
       }
       request.send(JSON.stringify(params));
